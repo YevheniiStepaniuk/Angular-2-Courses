@@ -1,0 +1,6 @@
+Products:
+<product
+  *ngFor="let product of products"
+  [model]=product
+  (onBuy)="onBuy.emit($event)">
+</product>

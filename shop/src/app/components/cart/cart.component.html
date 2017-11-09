@@ -1,0 +1,7 @@
+<div *ngIf="!!products && products.length > 0">
+  Cart:
+  <ul *ngFor="let product of products">
+    <li>{{product.name}}</li>
+    <li>{{product.price}}</li>
+  </ul>
+</div>
