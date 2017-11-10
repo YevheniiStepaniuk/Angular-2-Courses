@@ -7,6 +7,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductListComponenComponent } from './components/product-list-componen/product-list-componen.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductsService } from './shared/services/products.service';
+import { CartService } from './shared/services/cart.service';
 
 
 @NgModule({
@@ -19,7 +20,10 @@ import { ProductsService } from './shared/services/products.service';
   imports: [
     BrowserModule
   ],
-  providers: [ProductsService],
+  providers: [
+    ProductsService,
+    CartService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

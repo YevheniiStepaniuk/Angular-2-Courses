@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Product } from './shared/models/product.model';
 import { CartComponent } from './components/cart/cart.component';
+import { CartService } from './shared/services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,8 @@ import { CartComponent } from './components/cart/cart.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild(CartComponent) cart: CartComponent;
+  constructor(private cartService: CartService){}
   onBuy($event: Product){
-    this.cart.add($event);
+    this.cartService.addProduct($event);
   }
 }
