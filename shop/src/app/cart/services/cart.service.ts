@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Product } from '../models/product.model';
+import { Product } from '../../shared/models/product.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class CartService {
@@ -11,5 +11,4 @@ export class CartService {
   addProduct(product: Product) {
     this.recieveSubject.next(product);
   }
-
 }

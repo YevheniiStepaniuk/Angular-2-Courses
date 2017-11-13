@@ -1,9 +1,9 @@
 import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
-import { CategoryEnum } from '../../shared/models/category.enum';
-import { Ingredient } from '../../shared/models/ingredient.model';
-import { Equivalent } from '../../shared/models/equivalent.model';
-import { Product } from '../../shared/models/product.model';
-import { CartService } from '../../shared/services/cart.service';
+import { CategoryEnum } from '../../../shared/models/category.enum';
+import { Ingredient } from '../../../shared/models/ingredient.model';
+import { Equivalent } from '../../../shared/models/equivalent.model';
+import { Product } from '../../../shared/models/product.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'cart',

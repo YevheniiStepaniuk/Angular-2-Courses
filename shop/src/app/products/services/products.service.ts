@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product.model';
+import { Product } from '../../shared/models/product.model';
 import { Observable } from 'rxjs/Observable';
-import { CategoryEnum } from '../models/category.enum';
+import { CategoryEnum } from '../../shared/models/category.enum';
 
 @Injectable()
 export class ProductsService {

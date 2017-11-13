@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
-import { Product } from '../../shared/models/product.model';
-import { ProductsService } from '../../shared/services/products.service';
+import { Product } from '../../../shared/models/product.model';
+import { ProductsService } from './../../services/products.service';
 
 @Component({
   selector: 'products-list',
-  templateUrl: './product-list-componen.component.html',
-  styleUrls: ['./product-list-componen.component.scss']
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponenComponent implements OnInit {
+export class ProductListComponent implements OnInit {
 
   products: Array<Product>;
   @Output() onBuy: EventEmitter<Product> = new EventEmitter();

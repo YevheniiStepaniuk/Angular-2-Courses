@@ -1,8 +1,8 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { CategoryEnum } from '../../shared/models/category.enum';
-import { Ingredient } from '../../shared/models/ingredient.model';
-import { Equivalent } from '../../shared/models/equivalent.model';
-import { Product } from '../../shared/models/product.model';
+import { CategoryEnum } from '../../../shared/models/category.enum';
+import { Ingredient } from '../../../shared/models/ingredient.model';
+import { Equivalent } from '../../../shared/models/equivalent.model';
+import { Product } from '../../../shared/models/product.model';
 
 @Component({
   selector: 'product',
