@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../../shared/models/product.model';
+import { Product, IProduct } from '../../shared/models/product.model';
 import { Observable } from 'rxjs/Observable';
 import { CategoryEnum } from '../../shared/models/category.enum';
 
 @Injectable()
 export class ProductsService {
-  public getProducts(): Observable<Product[]> {
+  public getProducts(): Observable<IProduct[]> {
     return Observable.create((observer) => {
       observer.next([
         {
