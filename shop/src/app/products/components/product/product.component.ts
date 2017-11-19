@@ -10,6 +10,6 @@ import { Product } from '../../../shared/models/product.model';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  @Input() model: Product;
+  @Input() product: Product;
   @Output() onBuy: EventEmitter<Product> = new EventEmitter();
 }

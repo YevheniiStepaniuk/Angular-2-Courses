@@ -1,7 +1,16 @@
-<ul>
-  <li>{{model.name}}</li>
-  <li>{{model.price}}</li>
-  <li>{{model.description}}</li>
-  <li>{{model.isAvailable}}</li>
-</ul>
-<button (click)="onBuy.emit(model)">Buy</button>
+<div>
+  <div>Name: {{ product.name }}</div>
+  <div>Description: {{product.description}}</div>
+  <div>Price: {{product.price}}</div>
+  <div>Category: {{ product.category }}</div>
+
+  <b>Ingredients</b>
+  <div *ngFor="let ingr of product.ingredients">{{ingr}}</div>
+
+  <b>Equivalents</b>
+  <div *ngFor="let equivalent of product.equivalents">{{equivalent}}</div>
+  <button (click)="onBuy.emit(product)"
+          [disabled]="product.isAvailable">
+    Add to Cart
+  </button>
+</div>

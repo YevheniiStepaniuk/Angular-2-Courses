@@ -1,7 +1,15 @@
-<div *ngIf="!!products && products.length > 0">
-  Cart:
-  <ul *ngFor="let product of products">
-    <li>{{product.name}}</li>
-    <li>{{product.price}}</li>
-  </ul>
+
+<div id="cart">
+  <div *ngIf="!!products && products.length > 0">
+    Cart:
+    <div *ngFor="let cartItem of productsInCart">
+      <cart-item
+        [productQuantity]="cartItem.quantity"
+        [productName]="cartItem.product.name"
+        (onDeleteCartItem)="deleteCartItem($event, cartItem.product.name)" #myVar
+      ></cart-item>
+    </div>
+    Total price: {{ totalPrice }}
+    <button (click)="onBuy()">Buy</button>
+  </div>
 </div>

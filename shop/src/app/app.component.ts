@@ -9,8 +9,15 @@ import { CartService } from './cart/services/cart.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private cartService: CartService){}
-  onBuy($event: Product){
-    this.cartService.addProduct($event);
+  @ViewChild(CartListComponent) cart: CartListComponent;
+  @ViewChild('productList') productList: ProductListComponent;
+
+  onBuy(product: CookedProduct) {
+    product.itemsInStock--;
+    this.cart.addProduct(product);
+  }
+
+  itemRemovedFromCart(productName: string) {
+    this.productList.returnProduct(productName);
   }
 }

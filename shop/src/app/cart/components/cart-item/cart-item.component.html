@@ -1,12 +1,3 @@
-<ul>
-  <li>
-    Name - {{model.product.name}}
-  </li>
-  <li>
-    Price - {{model.product.price}}
-  </li>
-  <li>
-    Count -
-    <input type="number" min="0" [(ngModel)]="model.amount">
-  </li>
-</ul>
+
+{{ productName }}. Quantity: {{ productQuantity }}
+<button (click)="deleteCartItem($event)" class="buttonDelete">Delete from cart</button>

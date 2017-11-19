@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostBinding, HostListener } from '@angular/core';
 import { CartItem } from '../../../shared/models/cart-item.model';
 
 @Component({
@@ -8,10 +8,28 @@ import { CartItem } from '../../../shared/models/cart-item.model';
 })
 
 export class CartItemComponent implements OnInit {
-  @Input() model: CartItem;
-  // @Output() countChange: EventEmitter<CartItem> = new EventEmitter();
+  @Input() productQuantity: number;
+  @Input() productName: string;
+  @Output() onDeleteCartItem = new EventEmitter();
+  @HostBinding('class.selectedCartItem') appliedStyle: boolean;
   constructor() { }
 
   ngOnInit() { }
+
+  deleteCartItem(event: Event) {
+    this.onDeleteCartItem.emit(event);
+  }
+
+  @HostListener('mouseenter') changeBackgroundOnMouseEnter() {
+    this.appliedStyle = true;
+  }
+
+  @HostListener('mouseleave') changeBackBackgroundOnMouseLeave() {
+    this.appliedStyle = false;
+  }
+
+  callThiMethodFromParentComponent() {
+    console.log('added +1 to quantity for product: ' + this.productName);
+  }
 
 }
