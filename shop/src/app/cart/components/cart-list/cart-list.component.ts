@@ -9,13 +9,13 @@ import { CartItem } from '../../../shared/models/cart-item.model';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'cart-lits',
+  selector: 'cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit, OnDestroy {
   @Input() products: CartItem[];
-  @ViewChildren('myVar') myVar: QueryList<CartItemComponent>;
+  @ViewChildren('cartItems') cartItems: QueryList<CartItemComponent>;
   @Output() onCartItemDeleted = new EventEmitter();
   public totalPrice = 0;
   private subscription: Subscription;
@@ -31,6 +31,7 @@ export class CartListComponent implements OnInit, OnDestroy {
           } else {
             this.products.push({ product: data, count: 1 });
           }
+          this.recalculateTotalPrice();
         }
       },
       (err) => console.log(err)
@@ -60,14 +61,10 @@ export class CartListComponent implements OnInit, OnDestroy {
       }
     }
 
-    this.recalcTotalPrice();
+    this.recalculateTotalPrice();
   }
 
-  private findCartItem(nameOfCartItemToFind: string): CartItem {
-    return this.products.find((cartItem: CartItem) => cartItem.product.name === name);
-  }
-
-  private recalcTotalPrice(): void {
+  private recalculateTotalPrice(): void {
     this.totalPrice = this.cartService.getTotalPrice(this.products);
   }
 }

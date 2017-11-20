@@ -1,4 +1,5 @@
-<cart-list (onCartItemDeleted)="itemRemovedFromCart($event)"></cart-list>
-<div>
- <product-list (onBuy)="onBuy($event)" #productList></product-list>
-</div>
+<cart-list></cart-list>
+
+<hr/>
+
+<product-list (onBuy)="onBuy($event)" #productList></product-list>

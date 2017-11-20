@@ -5,12 +5,12 @@
   <div>Category: {{ product.category }}</div>
 
   <b>Ingredients</b>
-  <div *ngFor="let ingr of product.ingredients">{{ingr}}</div>
+  <div *ngFor="let ingr of product.ingredients">{{ingr.title}}</div>
 
   <b>Equivalents</b>
-  <div *ngFor="let equivalent of product.equivalents">{{equivalent}}</div>
+  <div *ngFor="let equivalent of product.equivalents">{{equivalent.title}}</div>
   <button (click)="onBuy.emit(product)"
-          [disabled]="product.isAvailable">
+          [disabled]="!product.isAvailable">
     Add to Cart
   </button>
 </div>

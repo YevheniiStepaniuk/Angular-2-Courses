@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CartModule } from './cart/cart.module';
 import { ProductModule } from './products/products.module';
+import { ProductsService } from './products/services/products.service';
+import { CartService } from './cart/services/cart.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CartModule,
-    ProductModule
+    AppComponent
   ],
   imports: [
     BrowserModule,

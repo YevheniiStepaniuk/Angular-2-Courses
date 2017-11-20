@@ -8,16 +8,16 @@ import { CartItem } from '../../../shared/models/cart-item.model';
 })
 
 export class CartItemComponent implements OnInit {
-  @Input() productQuantity: number;
+  @Input() productCount: number;
   @Input() productName: string;
-  @Output() onDeleteCartItem = new EventEmitter();
-  @HostBinding('class.selectedCartItem') appliedStyle: boolean;
+  @Output() delete = new EventEmitter();
+  @HostBinding('class.selected-item') appliedStyle: boolean;
   constructor() { }
 
   ngOnInit() { }
 
-  deleteCartItem(event: Event) {
-    this.onDeleteCartItem.emit(event);
+  onDelete(event: Event) {
+    this.delete.emit(event);
   }
 
   @HostListener('mouseenter') changeBackgroundOnMouseEnter() {
@@ -29,7 +29,7 @@ export class CartItemComponent implements OnInit {
   }
 
   callThiMethodFromParentComponent() {
-    console.log('added +1 to quantity for product: ' + this.productName);
+    console.log('added +1 to count for product: ' + this.productName);
   }
 
 }
