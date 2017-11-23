@@ -5,11 +5,11 @@ import { ConfigOptionsService } from './services/config-options.service';
 import { ConstantsService, ConstantsServiceToken } from './services/constants.service';
 import { GeneratorService } from './services/generator.service';
 import { FontDirective } from './directives/font.directive';
-
+import { OrderByPipe } from './pipes/order-by.pipe';
 @NgModule({
   imports: [CommonModule],
-  declarations: [FontDirective],
-  exports: [FontDirective],
+  declarations: [FontDirective, OrderByPipe],
+  exports: [FontDirective, OrderByPipe],
   providers: [
     ConfigOptionsService,
     LocalStorageService,

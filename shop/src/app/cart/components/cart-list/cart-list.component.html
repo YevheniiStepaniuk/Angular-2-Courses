@@ -1,8 +1,8 @@
 
 <div id="cart">
   <div *ngIf="!!products && products.length > 0">
-    Cart:
-    <div *ngFor="let cartItem of products">
+    {{'Cart:' | uppercase}}
+    <div *ngFor="let cartItem of (products | orderBy : 'count' : true)">
       <cart-item
         [productCount]="cartItem.count"
         [product]="cartItem.product"
@@ -10,7 +10,7 @@
         (deleteAll)="onDeleteAll($event)" #cartItems>
       </cart-item>
     </div>
-    Total price: {{ totalPrice }}
+    Total price: {{ totalPrice | currency: 'USD'}}
     Total Count: {{ totalCount }}
     <button (click)="onBuy()">Buy</button>
   </div>

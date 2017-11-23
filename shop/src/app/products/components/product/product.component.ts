@@ -10,4 +10,5 @@ import { CartItem } from '../../../shared/models/cart-item.model';
 export class ProductComponent {
   @Input() product: Product;
   @Output() onBuy: EventEmitter<CartItem> = new EventEmitter();
+  public count = 1;
 }
