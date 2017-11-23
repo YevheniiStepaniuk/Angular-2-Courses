@@ -53,7 +53,8 @@ export class CartService {
         if (item.count > product.count) {
           item.count--;
         } else {
-          this.changeSubject.next(cartItems.splice(cartItems.indexOf(item), 1));
+          cartItems.splice(cartItems.indexOf(item), 1)
+          this.changeSubject.next(cartItems);
         }
         this.updateCountSubject.next(this.updateCountSubject.value - product.count);
         this.updatePriceSubject.next(this.updatePriceSubject.value - (product.product.price * product.count));
