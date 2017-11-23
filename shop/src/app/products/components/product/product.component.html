@@ -1,16 +1,18 @@
 <div>
-  <div>Name: {{ product.name }}</div>
-  <div>Description: {{product.description}}</div>
-  <div>Price: {{product.price}}</div>
-  <div>Category: {{ product.category }}</div>
-
+  <div font-directive="20px" >
+    <div>Name: {{ product.name }}</div>
+    <div>Description: {{product.description}}</div>
+    <div>Price: {{product.price}}</div>
+    <div>Guid: {{product.guid}}</div>
+    <div>Category: {{ product.category }}</div>
+  </div>
   <b>Ingredients</b>
   <div *ngFor="let ingr of product.ingredients">{{ingr.title}}</div>
 
   <b>Equivalents</b>
   <div *ngFor="let equivalent of product.equivalents">{{equivalent.title}}</div>
-  <button (click)="onBuy.emit(product)"
-          [disabled]="!product.isAvailable">
+  <input type="number" value="1" [(ngModel)]="count" min="1" max="10">
+  <button (click)="onBuy.emit({product: product, count: count})" [disabled]="!product.isAvailable">
     Add to Cart
   </button>
 </div>

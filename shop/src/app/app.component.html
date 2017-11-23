@@ -1,3 +1,7 @@
+<button (click)="logToConsole(about)">Show about in console</button>
+<button *ngIf="!!configService" (click)="logToConsole(configService.getConfig())">Show config in console</button>
+
+<hr/>
 <cart-list></cart-list>
 
 <hr/>

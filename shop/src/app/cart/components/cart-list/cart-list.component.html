@@ -5,11 +5,13 @@
     <div *ngFor="let cartItem of products">
       <cart-item
         [productCount]="cartItem.count"
-        [productName]="cartItem.product.name"
-        (delete)="deleteCartItem($event, cartItem.product.name)" #cartItems>
+        [product]="cartItem.product"
+        (deleteOne)="onDeleteOne($event)"
+        (deleteAll)="onDeleteAll($event)" #cartItems>
       </cart-item>
     </div>
     Total price: {{ totalPrice }}
+    Total Count: {{ totalCount }}
     <button (click)="onBuy()">Buy</button>
   </div>
 </div>

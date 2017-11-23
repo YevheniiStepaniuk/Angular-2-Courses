@@ -2,15 +2,21 @@ import { Injectable } from '@angular/core';
 import { Product, IProduct } from '../../shared/models/product.model';
 import { Observable } from 'rxjs/Observable';
 import { CategoryEnum } from '../../shared/models/category.enum';
+import { GeneratorService } from '../../shared/services/generator.service';
 
 @Injectable()
 export class ProductsService {
+
+  constructor(private generatorService: GeneratorService){
+  }
+
   public getProducts(): Observable<IProduct[]> {
     return Observable.create((observer) => {
       observer.next([
         {
           name: 'Test 1',
           price: 90,
+          guid: this.generatorService.generate(),
           category: CategoryEnum.sport,
           description: 'Test 1 descroption',
           isAvailable: true,
@@ -27,6 +33,7 @@ export class ProductsService {
         {
           name: 'Test 2',
           price: 95,
+          guid: this.generatorService.generate(),
           category: CategoryEnum.sport,
           description: 'Test 2 descroption',
           isAvailable: true,
@@ -42,6 +49,7 @@ export class ProductsService {
         {
           name: 'Test 3',
           price: 190,
+          guid: this.generatorService.generate(),
           category: CategoryEnum.sport,
           description: 'Test 3 descroption',
           isAvailable: true,

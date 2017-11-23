@@ -8,6 +8,7 @@ export interface IProduct {
   price: number;
   category: CategoryEnum;
   isAvailable: boolean;
+  guid: string;
   ingredients?: Ingredient[];
   equivalents?: Equivalent[];
 }
@@ -18,6 +19,7 @@ export class Product implements IProduct {
   public price: number;
   public category: CategoryEnum;
   public isAvailable: boolean;
+  public guid: string;
   public ingredients?: Ingredient[];
   public equivalents?: Equivalent[];
 }

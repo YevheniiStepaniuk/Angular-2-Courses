@@ -18,53 +18,51 @@ export class CartListComponent implements OnInit, OnDestroy {
   @ViewChildren('cartItems') cartItems: QueryList<CartItemComponent>;
   @Output() onCartItemDeleted = new EventEmitter();
   public totalPrice = 0;
-  private subscription: Subscription;
+  public totalCount = 0;
+  private changeSubscription: Subscription;
+  private countChangeSubscription: Subscription;
+  private priceChangeSubscription: Subscription;
+
   constructor(private cartService: CartService) { }
   ngOnInit(): void {
-    this.products = new Array();
-    this.cartService.onRecieve.subscribe(
-      (data: Product) => {
-        if (!!data) {
-          const item = this.products.find((cartItem: CartItem) => cartItem.product.name === data.name);
-          if (!!item) {
-            item.count++;
-          } else {
-            this.products.push({ product: data, count: 1 });
-          }
-          this.recalculateTotalPrice();
-        }
-      },
+    this.changeSubscription = this.cartService.onChange.subscribe(
+      (data: CartItem[]) => this.products = data,
+      (err) => console.log(err)
+    );
+
+    this.countChangeSubscription = this.cartService.onCountChanges.subscribe(
+      (data: number) => this.totalCount = data,
+      (err) => console.log(err)
+    );
+
+    this.priceChangeSubscription = this.cartService.onPriceChanges.subscribe(
+      (data: number) => this.totalPrice = data,
       (err) => console.log(err)
     );
   }
   ngOnDestroy(): void {
-    if (!!this.subscription) {
-      this.subscription.unsubscribe();
+    if (!!this.changeSubscription) {
+      this.changeSubscription.unsubscribe();
+    }
+
+    if (!!this.countChangeSubscription) {
+      this.countChangeSubscription.unsubscribe();
+    }
+
+    if (!!this.priceChangeSubscription) {
+      this.priceChangeSubscription.unsubscribe();
     }
   }
   onBuy(): void {
     console.log('buy');
   }
 
-  deleteCartItem(event: Event, productToDelete: string) {
-    const itemToDelete = this.products.find((cartItem: CartItem) => cartItem.product.name === productToDelete);
-
-    if (!!itemToDelete) {
-
-      this.onCartItemDeleted.emit(productToDelete);
-
-      if (itemToDelete.count > 1) {
-        itemToDelete.count--;
-      } else {
-        const index = this.products.indexOf(itemToDelete);
-        this.products.splice(index, 1);
-      }
-    }
-
-    this.recalculateTotalPrice();
+  onDeleteAll(cartItem: CartItem) {
+    this.cartService.deleteItem(cartItem);
   }
 
-  private recalculateTotalPrice(): void {
-    this.totalPrice = this.cartService.getTotalPrice(this.products);
+  onDeleteOne(product: Product) {
+    this.cartService.deleteItem({ product: product, count: 1 });
   }
+
 }

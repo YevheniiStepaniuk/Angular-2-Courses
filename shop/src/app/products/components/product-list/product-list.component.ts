@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
-import { Product } from '../../../shared/models/product.model';
 import { ProductsService } from './../../services/products.service';
+import { CartItem } from '../../../shared/models/cart-item.model';
+import { Product } from '../../../shared/models/product.model';
 
 @Component({
   selector: 'product-list',
@@ -10,7 +11,7 @@ import { ProductsService } from './../../services/products.service';
 export class ProductListComponent implements OnInit {
 
   products: Array<Product>;
-  @Output() onBuy: EventEmitter<Product> = new EventEmitter();
+  @Output() onBuy: EventEmitter<CartItem> = new EventEmitter();
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
