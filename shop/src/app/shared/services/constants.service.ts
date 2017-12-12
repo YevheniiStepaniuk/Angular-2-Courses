@@ -10,7 +10,7 @@ export class ConstantsService {
   }
 }
 
-export const About = {
+const About = {
   application: 'Shop',
   version: '1.3',
   author: 'Yevhenii Stepaniuk'

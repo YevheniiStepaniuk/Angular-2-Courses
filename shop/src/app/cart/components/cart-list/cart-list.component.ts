@@ -19,38 +19,28 @@ export class CartListComponent implements OnInit, OnDestroy {
   @Output() onCartItemDeleted = new EventEmitter();
   public totalPrice = 0;
   public totalCount = 0;
-  private changeSubscription: Subscription;
-  private countChangeSubscription: Subscription;
-  private priceChangeSubscription: Subscription;
+  private subscription: Subscription;
 
   constructor(private cartService: CartService) { }
   ngOnInit(): void {
-    this.changeSubscription = this.cartService.onChange.subscribe(
+    this.subscription = this.cartService.onChange.subscribe(
       (data: CartItem[]) => this.products = data,
       (err) => console.log(err)
     );
 
-    this.countChangeSubscription = this.cartService.onCountChanges.subscribe(
+    this.subscription.add(this.cartService.onCountChanges.subscribe(
       (data: number) => this.totalCount = data,
       (err) => console.log(err)
-    );
+    ));
 
-    this.priceChangeSubscription = this.cartService.onPriceChanges.subscribe(
+    this.subscription.add(this.cartService.onPriceChanges.subscribe(
       (data: number) => this.totalPrice = data,
       (err) => console.log(err)
-    );
+    ));
   }
   ngOnDestroy(): void {
-    if (!!this.changeSubscription) {
-      this.changeSubscription.unsubscribe();
-    }
-
-    if (!!this.countChangeSubscription) {
-      this.countChangeSubscription.unsubscribe();
-    }
-
-    if (!!this.priceChangeSubscription) {
-      this.priceChangeSubscription.unsubscribe();
+    if (!!this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
   onBuy(): void {

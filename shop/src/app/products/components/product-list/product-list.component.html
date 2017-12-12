@@ -1,6 +1,6 @@
 {{'Products:' | uppercase}}
 <product
-  *ngFor="let product of (products | orderBy : 'name')"
+  *ngFor="let product of (products | orderBy : 'name' | async)"
   [product]=product
   (onBuy)="onBuy.emit($event)">
 </product>
