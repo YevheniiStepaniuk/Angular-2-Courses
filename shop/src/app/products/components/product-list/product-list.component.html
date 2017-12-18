@@ -1,6 +1,8 @@
 {{'Products:' | uppercase}}
-<product
-  *ngFor="let product of (products | orderBy : 'name' | async)"
-  [product]=product
-  (onBuy)="onBuy.emit($event)">
-</product>
+<div class="row">
+  <div class="col-3" *ngFor="let product of (products | orderBy : 'name')">
+    <product [product]=product (onBuy)="onBuy.emit($event)">
+    </product>
+  </div>
+
+</div>

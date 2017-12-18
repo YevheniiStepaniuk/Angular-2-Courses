@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Component, ViewChild, Inject, Optional } from '@angular/core';
 import { Product } from './shared/models/product.model';
 import { CartService } from './cart/services/cart.service';
@@ -13,27 +14,29 @@ import { ConfigOptionsService } from './shared/services/config-options.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild(CartListComponent) cart: CartListComponent;
-  @ViewChild('productList') productList: ProductListComponent;
-  public about: any;
+  private subscription: Subscription;
   constructor(private cartService: CartService,
-    @Inject(ConstantsServiceToken) constantsService: ConstantsService,
-    @Optional() public configService: ConfigOptionsService
   ) {
-    console.log(constantsService);
-    this.about = constantsService.getConst();
-    if (!!configService) {
-      configService.configure({
-        login: 'admin',
-        password: 'admin'
-      });
-    }
   }
   onBuy(product: CartItem) {
     this.cartService.addProduct(product);
+    console.log(product);
   }
 
   logToConsole(data: any) {
     console.log(data);
+  }
+
+  public onActivate($event) {
+    console.log('Activated Component', $event);
+    if ($event instanceof ProductListComponent) {
+      this.subscription = (<ProductListComponent>$event).onBuy.subscribe(this.onBuy.bind(this));
+    }
+  }
+  public onDeactivate($event) {
+    if ($event instanceof ProductListComponent && !!this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    console.log('Deactivated Component', $event);
   }
 }

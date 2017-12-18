@@ -1,18 +1,25 @@
-<div>
-  <div font-directive="20px" >
-    <div>Name: {{ product.name }}</div>
-    <div>Description: {{product.description}}</div>
-    <div>Price: {{product.price | currency: 'USD'}}</div>
-    <div>Guid: {{product.guid}}</div>
-    <div>Category: {{ product.category }}</div>
-  </div>
-  <b>Ingredients</b>
-  <div *ngFor="let ingr of product.ingredients">{{ingr.title}}</div>
+<div class="jumbotron">
+  <ul font-directive="20px" class="list-group">
+    <li class="list-group-item">Name: {{ product.name }}</li>
+    <li class="list-group-item">Description: {{product.description}}</li>
+    <li class="list-group-item">Price: {{product.price | currency: 'USD'}}</li>
+    <li class="list-group-item">Guid: {{product.guid}}</li>
+    <li class="list-group-item">Category: {{ product.category }}</li>
+  </ul>
+  <b class="display-6">Ingredients</b>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let ingr of product.ingredients">{{ingr.title}}</li>
+  </ul>
 
-  <b>Equivalents</b>
-  <div *ngFor="let equivalent of product.equivalents">{{equivalent.title}}</div>
-  <input type="number" value="1" [(ngModel)]="count" min="1">
-  <button (click)="onBuy.emit({product: product, count: count})" [disabled]="!product.isAvailable">
+  <b class="display-6">Equivalents</b>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let equivalent of product.equivalents">{{equivalent.title}}</li>
+  </ul>
+  <b class="display-6">Buy</b>
+  <div class="row">
+    <input type="number" value="1" class="form-control col" [(ngModel)]="count" min="1">
+  <button (click)="onBuy.emit({product: product, count: count})" class="btn btn-primary col" [disabled]="!product.isAvailable">
     Add to Cart
   </button>
+</div>
 </div>

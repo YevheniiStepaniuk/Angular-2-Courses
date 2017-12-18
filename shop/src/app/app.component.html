@@ -1,9 +1,14 @@
-<button (click)="logToConsole(about)">Show about in console</button>
-<button *ngIf="!!configService" (click)="logToConsole(configService.getConfig())">Show config in console</button>
+<!--
+  <button (click)="logToConsole(about)">Show about in console</button>
+  <button *ngIf="!!configService" (click)="logToConsole(configService.getConfig())">Show config in console</button>
 
-<hr/>
-<cart-list></cart-list>
+  <hr/>
+  <cart-list></cart-list>
 
-<hr/>
+  <hr/>
 
-<product-list (onBuy)="onBuy($event)" #productList></product-list>
+  <product-list (onBuy)="onBuy($event)" #productList></product-list>
+</div> -->
+<div class="container-fluid">
+  <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
+</div>
