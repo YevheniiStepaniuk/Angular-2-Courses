@@ -10,5 +10,6 @@
   <product-list (onBuy)="onBuy($event)" #productList></product-list>
 </div> -->
 <div class="container-fluid">
+  <navbar></navbar>
   <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
 </div>

@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class CartListComponent implements OnInit, OnDestroy {
   @Input() products: CartItem[];
   @ViewChildren('cartItems') cartItems: QueryList<CartItemComponent>;
-  @Output() onCartItemDeleted = new EventEmitter();
+  @Output() orderCreating = new EventEmitter();
   public totalPrice = 0;
   public totalCount = 0;
   private subscription: Subscription;
@@ -44,7 +44,7 @@ export class CartListComponent implements OnInit, OnDestroy {
     }
   }
   onBuy(): void {
-    console.log('buy');
+    this.orderCreating.next(this.cartService.createOrder());
   }
 
   onDeleteAll(cartItem: CartItem) {

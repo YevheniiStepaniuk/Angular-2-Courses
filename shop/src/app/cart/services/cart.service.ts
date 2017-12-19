@@ -1,3 +1,4 @@
+import { Order } from './../../shared/models/order.model';
 import { CartItem } from './../../shared/models/cart-item.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -60,6 +61,14 @@ export class CartService {
         this.updatePriceSubject.next(this.updatePriceSubject.value - (product.product.price * product.count));
       }
     }
+  }
+
+  createOrder(): Order {
+    const order = this.getAllItems();
+    this.changeSubject.next([]);
+    this.updatePriceSubject.next(0);
+    this.updateCountSubject.next(0);
+    return new Order(order);
   }
 
 }

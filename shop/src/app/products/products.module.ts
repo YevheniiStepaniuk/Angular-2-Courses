@@ -1,3 +1,4 @@
+import { ProductsComponent } from './products.component';
 import { ProductsRoutingModule } from './products.routing.module';
 import { NgModule } from '@angular/core';
 import { ProductComponent } from './components/product/product.component';
@@ -6,6 +7,7 @@ import { ProductsService } from './services/products.service';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { Product } from '../shared/models/product.model';
 
 @NgModule({
   imports: [
@@ -16,10 +18,11 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     ProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductsComponent
   ],
   exports: [
-    ProductListComponent
+    ProductsComponent
   ],
   providers: [
     ProductsService
