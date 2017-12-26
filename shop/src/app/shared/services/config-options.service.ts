@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
+import {ConfigOptions} from '../models/config-options.model';
 
 @Injectable()
 export class ConfigOptionsService {
-  private config: any;
+  private configOptions: ConfigOptions;
 
-  configure(config: any) {
-    this.config = config;
+  configure(config: ConfigOptions) {
+    this.configOptions = config;
   }
 
   getConfig() {
-    return this.config;
+    return this.configOptions;
   }
 }

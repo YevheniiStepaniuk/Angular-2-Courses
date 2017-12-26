@@ -2,16 +2,14 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GeneratorService {
-
+  private static possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   constructor(private length: number) { }
 
-  generate(): string {
-    let result = '';
+  generateString(): string {
+    let text = '';
     for (let index = 0; index < this.length; index++) {
-      result += AllowedSymbols.charAt(Math.random() * AllowedSymbols.length);
+      text += GeneratorService.possible.charAt(Math.random() * GeneratorService.length);
     }
-    return result;
+    return text;
   }
 }
-
-export const AllowedSymbols = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890';

@@ -6,14 +6,11 @@ export class ConstantsService {
   constructor() { }
 
   getConst() {
-    return About;
+    return AppInfo;
   }
 }
 
-const About = {
-  application: 'Shop',
-  version: '1.3',
-  author: 'Yevhenii Stepaniuk'
+const AppInfo = {
+  application: 'TaskManager',
+  version: '1.0'
 };
-
-export const ConstantsServiceToken = new InjectionToken<ConstantsService>('ConstantsService');

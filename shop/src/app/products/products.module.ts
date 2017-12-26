@@ -1,31 +1,28 @@
-import { ProductsComponent } from './products.component';
-import { ProductsRoutingModule } from './products.routing.module';
-import { NgModule } from '@angular/core';
-import { ProductComponent } from './components/product/product.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductsService } from './services/products.service';
-import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
-import { Product } from '../shared/models/product.model';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {ProductsRoutingModule} from './products.routing.module';
+import { ProductInfoComponent } from './product-info/product-info.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductComponent } from './product/product.component';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductService } from './services/product.service';
 
 @NgModule({
+  declarations: [
+    ProductListComponent,
+    ProductComponent,
+    ProductFormComponent,
+    ProductInfoComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule,
     ProductsRoutingModule
   ],
-  declarations: [
-    ProductComponent,
-    ProductListComponent,
-    ProductsComponent
-  ],
-  exports: [
-    ProductsComponent
-  ],
   providers: [
-    ProductsService
+    ProductService
   ]
 })
-export class ProductModule { }
+export class ProductsModule {
+}

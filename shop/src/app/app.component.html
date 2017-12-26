@@ -1,15 +1,51 @@
-<!--
-  <button (click)="logToConsole(about)">Show about in console</button>
-  <button *ngIf="!!configService" (click)="logToConsole(configService.getConfig())">Show config in console</button>
+<div>
+  <div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" routerLink="/home">SHOP</a>
+        </div>
 
-  <hr/>
-  <cart-list></cart-list>
+        <div>
+          <ul class="nav navbar-nav">
+            <li routerLinkActive="active">
+              <a routerLink="/cart">Cart</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/admin">Admin</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/login">Login</a>
+            </li>
 
-  <hr/>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <product-list (onBuy)="onBuy($event)" #productList></product-list>
-</div> -->
-<div class="container-fluid">
-  <navbar></navbar>
-  <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
+    <div class="container">
+      <div class="col-md-10">
+        <router-outlet
+          (activate)='onActivate($event)'
+          (deactivate)='onDeactivate($event)'>
+        </router-outlet>
+        <!-- Routed views go here -->
+      </div>
+      <br/>
+      <div class="col-md-2">
+        <button class="btn btn-success"
+                *ngIf="!publicCartService.isDisplayed"
+                (click)="displayMessages()">Show Cart
+        </button>
+
+        <router-outlet name="popup"></router-outlet>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+
+
+<!--<div fontChangerDirective="44px">Copyright 2017 - CLICK ME</div>-->
+<!--<div>Last visit: {{lastVisited }}</div>-->
