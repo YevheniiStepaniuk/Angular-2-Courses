@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import './../../services/rxjs-extensions';
 
 import { Product } from './../../shared/models/product';
 
