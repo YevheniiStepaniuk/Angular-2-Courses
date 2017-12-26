@@ -1,0 +1,93 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "date": "2017-12-24",
+      "items": [
+        {
+          "productName": "test",
+          "quantity": 11
+        },
+        {
+          "productName": "Product 1",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "items": [
+        {
+          "productName": "Product 1",
+          "quantity": 1
+        },
+        {
+          "productName": "Product 2",
+          "quantity": 1
+        },
+        {
+          "productName": "Product 3",
+          "quantity": 1
+        }
+      ],
+      "date": "2017/12/25"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "itemsInStock": 1,
+      "price": 418,
+      "description": "Product 1"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "itemsInStock": 111,
+      "price": 33
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "itemsInStock": 5,
+      "price": 7,
+      "description": "Product 3"
+    },
+    {
+      "id": 4,
+      "name": "Test",
+      "itemsInStock": 1,
+      "price": 18,
+      "description": "test"
+    },
+    {
+      "id": 5,
+      "name": "test 2",
+      "itemsInStock": 1,
+      "price": 2,
+      "description": "tets 1"
+    },
+    {
+      "id": 6,
+      "name": "test 3",
+      "itemsInStock": 1,
+      "price": 44,
+      "description": "test"
+    },
+    {
+      "id": 7,
+      "name": "test1",
+      "itemsInStock": 1,
+      "price": 3,
+      "description": "s"
+    },
+    {
+      "name": "ddddd",
+      "price": 99,
+      "itemsInStock": 32,
+      "description": "aaaddw",
+      "id": 8
+    }
+  ]
+}
