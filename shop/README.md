@@ -1,2 +1,9 @@
-Total price recalrulated in Cart.
-Adding item to cart reduces items in stock and item may become unavailable. Removing item from cart will lead to making the product available again.
+## Testting
+
+1. Создайте 2-3 интеграционных юнит тестов для тестирования ваших компонентов.
+2. Создайте изолированный юнит тест для тестирования одного из ваших сервисов.
+3. Создайте изолированный юнит тест для тестирования одного из ваших пайпов.
+4. Создайте поверхностный юнит тест для тестирования вашего AppComponent.
+5. Создайте отчет о покрытии кода тестами.
+
+### To generate code coverage run: npm run test:cc and navigate to ./coverage
