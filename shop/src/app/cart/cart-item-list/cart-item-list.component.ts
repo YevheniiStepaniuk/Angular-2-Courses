@@ -27,7 +27,6 @@ export class CartItemListComponent implements OnInit, OnDestroy {
       .then(cartItems => this.cartItems = [...cartItems])
       .catch(err => console.log(err));
 
-    // listen id from CartItemFormComponent
     this.route.paramMap
       .switchMap((params: Params) => this.cartArrayService.get(params.get('id')))
       .subscribe(
@@ -51,22 +50,7 @@ export class CartItemListComponent implements OnInit, OnDestroy {
   }
 
   placeOrder(): void {
-    // free up the cart
-    this.publicCartService.clear();
-    // save order
-    const orderItems = new Array<OrderItem>();
-    for (const item of this.cartItems) {
-      orderItems.push(new OrderItem(item.name, item.numberInCart));
-    }
-
-    this.orderService.placeOrder(new Order(-1, orderItems));
-    this.orderService.placeOrder(new Order(0, orderItems))
-          .subscribe(
-          () => {
-            this.router.navigate(['admin/orders']);
-          },
-          error => console.log(error)
-        );
-        ;
+    const link = ['/order'];
+    this.router.navigate(link);
   }
 }

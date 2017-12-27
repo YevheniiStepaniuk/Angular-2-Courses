@@ -1,3 +1,4 @@
+import { ProcessOrderComponent } from './core/components/process-order/process-order.component';
 import { AboutComponent } from './core/components/about/about.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { PublicCartComponent } from './core/components/public-cart/public-cart.component';
@@ -30,7 +31,11 @@ const routes: Routes = [
     component: LoginComponent,
     data: { title: 'Login' }
   },
-
+  {
+    path: 'order',
+    component: ProcessOrderComponent,
+    data: { title: 'Make an order' }
+  },
   {
     path: '',
     redirectTo: '/home',
@@ -42,8 +47,6 @@ const routes: Routes = [
     outlet: 'popup'
   },
   {
-    // The router will match this route if the URL requested
-    // doesn't match any paths for routes defined in our configuration
     path: '**',
     component: PageNotFoundComponent,
     data: { title: 'Page Not Found' }
