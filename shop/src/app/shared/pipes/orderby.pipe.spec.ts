@@ -1,6 +1,6 @@
 import { OrderByPipe } from './orderby.pipe';
 
-describe('OngoingModule:: UserTypePipe', () => {
+describe('OrderByPipe', () => {
     let sut;
     let data;
     beforeEach(() => {
@@ -32,7 +32,7 @@ describe('OngoingModule:: UserTypePipe', () => {
             id: 3,
             name: '3'
         }];
-        const result = sut.transform(data, 'id');
+        const result = sut.transform(data, 'id', true);
         expect(result).toEqual(expectData);
     });
 
@@ -49,7 +49,7 @@ describe('OngoingModule:: UserTypePipe', () => {
             id: 1,
             name: '1'
         }];
-        const result = sut.transform(data, 'name', true);
+        const result = sut.transform(data, 'name');
         expect(result).toEqual(expectData);
     });
 });

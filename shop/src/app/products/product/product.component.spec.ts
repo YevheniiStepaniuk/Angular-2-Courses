@@ -1,10 +1,12 @@
+import { Router } from '@angular/router';
+import { CartService } from './../../shared/services/public-cart.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ProductComponent } from './product.component';
 
-describe('HeaderComponent', () => {
+describe('Product component', () => {
   let component: ProductComponent,
       fixture: ComponentFixture<ProductComponent>,
       de: DebugElement,
@@ -13,7 +15,8 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed
       .configureTestingModule({
-        declarations: [ProductComponent]
+        declarations: [ProductComponent],
+        providers: [CartService]
       })
       .compileComponents();
 
@@ -26,7 +29,7 @@ describe('HeaderComponent', () => {
         name: 'test'
     };
     component.product = product;
-    de = fixture.debugElement.query(By.css('ul>li:first-child'));
+    de = fixture.debugElement.query(By.css('div>b>a:first-child'));
     el = de.nativeElement;
   });
 

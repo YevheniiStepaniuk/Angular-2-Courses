@@ -11,8 +11,7 @@ export class ProductComponent {
   @Input() product: Product;
   @Output() onComplete = new EventEmitter<Product>();
 
-  constructor(private router: Router,
-    private messagesService: CartService,
+  constructor(private messagesService: CartService,
   ) {
   }
 
